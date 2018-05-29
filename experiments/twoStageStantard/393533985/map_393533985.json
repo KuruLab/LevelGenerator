@@ -1,0 +1,410 @@
+{
+"graph": "393533985",
+"generator": "EvolutionaryBarabasiAlbertGenerator",
+"ui.antialias": true,
+"ui.quality": true,
+"nodes": [
+	{
+		"id": "0",
+		"position": [166.0, 217.0, 0.0],
+		"width": 38.0,
+		"height": 38.0,
+		"degree": 4,
+		"intensity": 0.396802,
+		"symbol": "0",
+		"condition": "0"
+	},
+	{
+		"id": "1",
+		"position": [236.0, 217.0, 0.0],
+		"width": 30.0,
+		"height": 30.0,
+		"degree": 3,
+		"intensity": 0.297501,
+		"symbol": "0",
+		"condition": "0"
+	},
+	{
+		"id": "2",
+		"position": [344.0, 229.0, 0.0],
+		"width": 46.0,
+		"height": 46.0,
+		"degree": 5,
+		"intensity": 0.571903,
+		"symbol": "0",
+		"condition": "B"
+	},
+	{
+		"id": "3",
+		"position": [425.0, 230.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.671262,
+		"symbol": "0",
+		"condition": "B"
+	},
+	{
+		"id": "4",
+		"position": [165.0, 258.0, 0.0],
+		"width": 30.0,
+		"height": 30.0,
+		"degree": 3,
+		"intensity": 0.330765,
+		"symbol": "0",
+		"condition": "A"
+	},
+	{
+		"id": "5",
+		"position": [212.0, 258.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.451050,
+		"symbol": "0",
+		"condition": "A"
+	},
+	{
+		"id": "6",
+		"position": [352.0, 139.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.759867,
+		"symbol": "0",
+		"condition": "C"
+	},
+	{
+		"id": "7",
+		"position": [393.0, 217.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.643207,
+		"symbol": "0",
+		"condition": "B"
+	},
+	{
+		"id": "8",
+		"position": [236.0, 182.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.197800,
+		"symbol": "0",
+		"condition": "0"
+	},
+	{
+		"id": "9",
+		"position": [212.0, 290.0, 0.0],
+		"width": 30.0,
+		"height": 30.0,
+		"degree": 3,
+		"intensity": 0.551937,
+		"symbol": "0",
+		"condition": "A"
+	},
+	{
+		"id": "10",
+		"position": [212.0, 335.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.623683,
+		"symbol": "0",
+		"condition": "A"
+	},
+	{
+		"id": "11",
+		"position": [352.0, 102.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.849874,
+		"symbol": "0",
+		"condition": "C"
+	},
+	{
+		"id": "12",
+		"position": [89.0, 213.0, 0.0],
+		"width": 30.0,
+		"height": 30.0,
+		"degree": 3,
+		"intensity": 0.716492,
+		"symbol": "0",
+		"condition": "C"
+	},
+	{
+		"id": "13",
+		"position": [60.0, 213.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.830976,
+		"symbol": "0",
+		"condition": "C"
+	},
+	{
+		"id": "14",
+		"position": [165.0, 290.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.682294,
+		"symbol": "0",
+		"condition": "A"
+	},
+	{
+		"id": "15",
+		"position": [212.0, 361.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.717106,
+		"symbol": "B",
+		"condition": "A"
+	},
+	{
+		"id": "16",
+		"position": [236.0, 121.0, 0.0],
+		"width": 30.0,
+		"height": 30.0,
+		"degree": 3,
+		"intensity": 0.099765,
+		"symbol": "0",
+		"condition": "0"
+	},
+	{
+		"id": "17",
+		"position": [347.0, 284.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.694417,
+		"symbol": "0",
+		"condition": "B"
+	},
+	{
+		"id": "18",
+		"position": [166.0, 190.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.790369,
+		"symbol": "0",
+		"condition": "C"
+	},
+	{
+		"id": "19",
+		"position": [356.0, 368.0, 0.0],
+		"width": 24.0,
+		"height": 24.0,
+		"degree": 2,
+		"intensity": 0.794547,
+		"symbol": "0",
+		"condition": "B"
+	},
+	{
+		"id": "20",
+		"position": [270.0, 121.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.000000,
+		"symbol": "Start",
+		"condition": "0"
+	},
+	{
+		"id": "21",
+		"position": [405.0, 102.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.990000,
+		"symbol": "D",
+		"condition": "C"
+	},
+	{
+		"id": "22",
+		"position": [382.0, 368.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.941053,
+		"symbol": "C",
+		"condition": "B"
+	},
+	{
+		"id": "23",
+		"position": [89.0, 243.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 1.000000,
+		"symbol": "Boss",
+		"condition": "D"
+	},
+	{
+		"id": "24",
+		"position": [236.0, 98.0, 0.0],
+		"width": 16.0,
+		"height": 16.0,
+		"degree": 1,
+		"intensity": 0.199467,
+		"symbol": "A",
+		"condition": "0"
+	}
+],
+"edges": [
+	{
+		"id": "0_1",
+		"a": "0",
+		"b": "1",
+		"symbol": "0"
+	},
+	{
+		"id": "0_4",
+		"a": "0",
+		"b": "4",
+		"symbol": "A"
+	},
+	{
+		"id": "0_12",
+		"a": "0",
+		"b": "12",
+		"symbol": "C"
+	},
+	{
+		"id": "0_18",
+		"a": "0",
+		"b": "18",
+		"symbol": "C"
+	},
+	{
+		"id": "1_2",
+		"a": "1",
+		"b": "2",
+		"symbol": "B"
+	},
+	{
+		"id": "1_8",
+		"a": "1",
+		"b": "8",
+		"symbol": "0"
+	},
+	{
+		"id": "2_3",
+		"a": "2",
+		"b": "3",
+		"symbol": "0"
+	},
+	{
+		"id": "2_6",
+		"a": "2",
+		"b": "6",
+		"symbol": "C"
+	},
+	{
+		"id": "2_7",
+		"a": "2",
+		"b": "7",
+		"symbol": "0"
+	},
+	{
+		"id": "2_17",
+		"a": "2",
+		"b": "17",
+		"symbol": "0"
+	},
+	{
+		"id": "4_5",
+		"a": "4",
+		"b": "5",
+		"symbol": "0"
+	},
+	{
+		"id": "4_14",
+		"a": "4",
+		"b": "14",
+		"symbol": "0"
+	},
+	{
+		"id": "5_9",
+		"a": "5",
+		"b": "9",
+		"symbol": "0"
+	},
+	{
+		"id": "6_11",
+		"a": "6",
+		"b": "11",
+		"symbol": "0"
+	},
+	{
+		"id": "8_16",
+		"a": "8",
+		"b": "16",
+		"symbol": "0"
+	},
+	{
+		"id": "9_10",
+		"a": "9",
+		"b": "10",
+		"symbol": "0"
+	},
+	{
+		"id": "9_14",
+		"a": "9",
+		"b": "14",
+		"symbol": "0"
+	},
+	{
+		"id": "10_15",
+		"a": "10",
+		"b": "15",
+		"symbol": "0"
+	},
+	{
+		"id": "11_21",
+		"a": "11",
+		"b": "21",
+		"symbol": "0"
+	},
+	{
+		"id": "12_13",
+		"a": "12",
+		"b": "13",
+		"symbol": "0"
+	},
+	{
+		"id": "12_23",
+		"a": "12",
+		"b": "23",
+		"symbol": "D"
+	},
+	{
+		"id": "16_20",
+		"a": "16",
+		"b": "20",
+		"symbol": "0"
+	},
+	{
+		"id": "16_24",
+		"a": "16",
+		"b": "24",
+		"symbol": "0"
+	},
+	{
+		"id": "17_19",
+		"a": "17",
+		"b": "19",
+		"symbol": "0"
+	},
+	{
+		"id": "19_22",
+		"a": "19",
+		"b": "22",
+		"symbol": "0"
+	}
+]
+}

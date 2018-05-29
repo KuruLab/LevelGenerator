@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<About>
+		<Summary>Dungeon!</Summary>
+	</About>
+
+	<ServerSection>
+		<ServerInitialConditions>
+			<Time>
+				<StartTime>12000</StartTime>
+				<AllowPassageOfTime>false</AllowPassageOfTime>
+			</Time>
+			<Weather>clear</Weather>
+		</ServerInitialConditions>
+		<ServerHandlers>
+			<FlatWorldGenerator/>
+			<DrawingDecorator>
+				<DrawCuboid x1="154" y1="4" z1="210" x2="200" y2="14" z2="256" type="stone"/>
+				<DrawCuboid x1="155" y1="5" z1="211" x2="199" y2="13" z2="255" type="air"/>
+				<DrawCuboid x1="240" y1="4" z1="198" x2="260" y2="14" z2="218" type="stone"/>
+				<DrawCuboid x1="241" y1="5" z1="199" x2="259" y2="13" z2="217" type="air"/>
+				<DrawCuboid x1="212" y1="4" z1="266" x2="240" y2="14" z2="294" type="stone"/>
+				<DrawCuboid x1="213" y1="5" z1="267" x2="239" y2="13" z2="293" type="air"/>
+				<DrawCuboid x1="256" y1="4" z1="325" x2="276" y2="14" z2="345" type="stone"/>
+				<DrawCuboid x1="257" y1="5" z1="326" x2="275" y2="13" z2="344" type="air"/>
+				<DrawCuboid x1="207" y1="4" z1="225" x2="223" y2="14" z2="241" type="stone"/>
+				<DrawCuboid x1="208" y1="5" z1="226" x2="222" y2="13" z2="240" type="air"/>
+				<DrawCuboid x1="182" y1="4" z1="185" x2="206" y2="14" z2="209" type="stone"/>
+				<DrawCuboid x1="183" y1="5" z1="186" x2="205" y2="13" z2="208" type="air"/>
+				<DrawCuboid x1="242" y1="4" z1="265" x2="258" y2="14" z2="281" type="stone"/>
+				<DrawCuboid x1="243" y1="5" z1="266" x2="257" y2="13" z2="280" type="air"/>
+				<DrawBlock x="250" y="5" z="273" type="chest"/>
+
+				<DrawBlock x="249" y="5" z="272" type="torch"/>
+
+				<DrawBlock x="249" y="5" z="274" type="torch"/>
+
+				<DrawBlock x="251" y="5" z="272" type="torch"/>
+
+				<DrawBlock x="251" y="5" z="274" type="torch"/>
+
+				<DrawCuboid x1="143" y1="4" z1="175" x2="171" y2="14" z2="203" type="stone"/>
+				<DrawCuboid x1="144" y1="5" z1="176" x2="170" y2="13" z2="202" type="air"/>
+				<DrawBlock x="157" y="5" z="189" type="chest"/>
+
+				<DrawBlock x="156" y="5" z="188" type="torch"/>
+
+				<DrawBlock x="156" y="5" z="190" type="torch"/>
+
+				<DrawBlock x="158" y="5" z="188" type="torch"/>
+
+				<DrawBlock x="158" y="5" z="190" type="torch"/>
+
+				<DrawCuboid x1="111" y1="4" z1="216" x2="139" y2="14" z2="244" type="stone"/>
+				<DrawCuboid x1="112" y1="5" z1="217" x2="138" y2="13" z2="243" type="air"/>
+				<DrawCuboid x1="201" y1="4" z1="146" x2="229" y2="14" z2="174" type="stone"/>
+				<DrawCuboid x1="202" y1="5" z1="147" x2="228" y2="13" z2="173" type="air"/>
+				<DrawCuboid x1="114" y1="4" z1="110" x2="142" y2="14" z2="138" type="stone"/>
+				<DrawCuboid x1="115" y1="5" z1="111" x2="141" y2="13" z2="137" type="air"/>
+				<DrawCuboid x1="241" y1="4" z1="38" x2="261" y2="14" z2="58" type="stone"/>
+				<DrawCuboid x1="242" y1="5" z1="39" x2="260" y2="13" z2="57" type="air"/>
+				<DrawCuboid x1="203" y1="4" z1="72" x2="227" y2="14" z2="96" type="stone"/>
+				<DrawCuboid x1="204" y1="5" z1="73" x2="226" y2="13" z2="95" type="air"/>
+				<DrawCuboid x1="58" y1="4" z1="193" x2="82" y2="14" z2="217" type="stone"/>
+				<DrawCuboid x1="59" y1="5" z1="194" x2="81" y2="13" z2="216" type="air"/>
+				<DrawCuboid x1="149" y1="4" z1="71" x2="177" y2="14" z2="99" type="stone"/>
+				<DrawCuboid x1="150" y1="5" z1="72" x2="176" y2="13" z2="98" type="air"/>
+				<DrawCuboid x1="72" y1="4" z1="227" x2="92" y2="14" z2="247" type="stone"/>
+				<DrawCuboid x1="73" y1="5" z1="228" x2="91" y2="13" z2="246" type="air"/>
+				<DrawBlock x="82" y="5" z="237" type="chest"/>
+
+				<DrawBlock x="81" y="5" z="236" type="torch"/>
+
+				<DrawBlock x="81" y="5" z="238" type="torch"/>
+
+				<DrawBlock x="83" y="5" z="236" type="torch"/>
+
+				<DrawBlock x="83" y="5" z="238" type="torch"/>
+
+				<DrawCuboid x1="37" y1="4" z1="136" x2="57" y2="14" z2="156" type="stone"/>
+				<DrawCuboid x1="38" y1="5" z1="137" x2="56" y2="13" z2="155" type="air"/>
+				<DrawCuboid x1="91" y1="4" z1="116" x2="111" y2="14" z2="136" type="stone"/>
+				<DrawCuboid x1="92" y1="5" z1="117" x2="110" y2="13" z2="135" type="air"/>
+				<DrawCuboid x1="116" y1="4" z1="78" x2="140" y2="14" z2="102" type="stone"/>
+				<DrawCuboid x1="117" y1="5" z1="79" x2="139" y2="13" z2="101" type="air"/>
+				<DrawCuboid x1="109" y1="4" z1="251" x2="133" y2="14" z2="275" type="stone"/>
+				<DrawCuboid x1="110" y1="5" z1="252" x2="132" y2="13" z2="274" type="air"/>
+				<DrawCuboid x1="121" y1="4" z1="48" x2="141" y2="14" z2="68" type="stone"/>
+				<DrawCuboid x1="122" y1="5" z1="49" x2="140" y2="13" z2="67" type="air"/>
+				<DrawCuboid x1="113" y1="4" z1="280" x2="129" y2="14" z2="296" type="stone"/>
+				<DrawCuboid x1="114" y1="5" z1="281" x2="128" y2="13" z2="295" type="air"/>
+				<DrawCuboid x1="126" y1="4" z1="169" x2="142" y2="14" z2="185" type="stone"/>
+				<DrawCuboid x1="127" y1="5" z1="170" x2="141" y2="13" z2="184" type="air"/>
+				<DrawCuboid x1="275" y1="4" z1="354" x2="291" y2="14" z2="370" type="stone"/>
+				<DrawCuboid x1="276" y1="5" z1="355" x2="290" y2="13" z2="369" type="air"/>
+				<DrawCuboid x1="218" y1="4" z1="302" x2="234" y2="14" z2="318" type="stone"/>
+				<DrawCuboid x1="219" y1="5" z1="303" x2="233" y2="13" z2="317" type="air"/>
+				<DrawCuboid x1="161" y1="4" z1="270" x2="177" y2="14" z2="286" type="stone"/>
+				<DrawCuboid x1="162" y1="5" z1="271" x2="176" y2="13" z2="285" type="air"/>
+				<DrawLine x1="170" y1="4" z1="270" x2="172" y2="4" z2="256" type="stone"/>
+				<DrawCuboid x1="169" y1="5" z1="269" x2="171" y2="6" z2="271" type="air"/>
+				<DrawCuboid x1="171" y1="5" z1="255" x2="173" y2="6" z2="257" type="air"/>
+				<DrawLine x1="227" y1="4" z1="72" x2="241" y2="4" z2="58" type="stone"/>
+				<DrawCuboid x1="226" y1="5" z1="71" x2="228" y2="6" z2="73" type="air"/>
+				<DrawCuboid x1="240" y1="5" z1="57" x2="242" y2="6" z2="59" type="air"/>
+				<DrawLine x1="207" y1="4" z1="174" x2="200" y2="4" z2="185" type="stone"/>
+				<DrawCuboid x1="206" y1="5" z1="173" x2="208" y2="6" z2="175" type="air"/>
+				<DrawCuboid x1="199" y1="5" z1="184" x2="201" y2="6" z2="186" type="air"/>
+				<DrawLine x1="226" y1="4" z1="302" x2="226" y2="4" z2="294" type="stone"/>
+				<DrawCuboid x1="225" y1="5" z1="301" x2="227" y2="6" z2="303" type="air"/>
+				<DrawCuboid x1="225" y1="5" z1="293" x2="227" y2="6" z2="295" type="air"/>
+				<DrawLine x1="133" y1="4" z1="256" x2="154" y2="4" z2="245" type="stone"/>
+				<DrawCuboid x1="132" y1="5" z1="255" x2="134" y2="6" z2="257" type="air"/>
+				<DrawCuboid x1="153" y1="5" z1="244" x2="155" y2="6" z2="246" type="air"/>
+				<DrawLine x1="247" y1="4" z1="58" x2="219" y2="4" z2="146" type="stone"/>
+				<DrawCuboid x1="246" y1="5" z1="57" x2="248" y2="6" z2="59" type="air"/>
+				<DrawCuboid x1="218" y1="5" z1="145" x2="220" y2="6" z2="147" type="air"/>
+				<DrawLine x1="91" y1="4" z1="129" x2="57" y2="4" z2="142" type="stone"/>
+				<DrawCuboid x1="90" y1="5" z1="128" x2="92" y2="6" z2="130" type="air"/>
+				<DrawCuboid x1="56" y1="5" z1="141" x2="58" y2="6" z2="143" type="air"/>
+				<DrawLine x1="121" y1="4" z1="280" x2="121" y2="4" z2="275" type="stone"/>
+				<DrawCuboid x1="120" y1="5" z1="279" x2="122" y2="6" z2="281" type="air"/>
+				<DrawCuboid x1="120" y1="5" z1="274" x2="122" y2="6" z2="276" type="air"/>
+				<DrawLine x1="240" y1="4" z1="211" x2="200" y2="4" z2="225" type="stone"/>
+				<DrawCuboid x1="239" y1="5" z1="210" x2="241" y2="6" z2="212" type="air"/>
+				<DrawCuboid x1="199" y1="5" z1="224" x2="201" y2="6" z2="226" type="air"/>
+				<DrawLine x1="163" y1="4" z1="203" x2="166" y2="4" z2="210" type="stone"/>
+				<DrawCuboid x1="162" y1="5" z1="202" x2="164" y2="6" z2="204" type="air"/>
+				<DrawCuboid x1="165" y1="5" z1="209" x2="167" y2="6" z2="211" type="air"/>
+				<DrawLine x1="82" y1="4" z1="210" x2="111" y2="4" z2="223" type="stone"/>
+				<DrawCuboid x1="81" y1="5" z1="209" x2="83" y2="6" z2="211" type="air"/>
+				<DrawCuboid x1="110" y1="5" z1="222" x2="112" y2="6" z2="224" type="air"/>
+				<DrawLine x1="242" y1="4" z1="275" x2="240" y2="4" z2="275" type="stone"/>
+				<DrawCuboid x1="241" y1="5" z1="274" x2="243" y2="6" z2="276" type="air"/>
+				<DrawCuboid x1="239" y1="5" z1="274" x2="241" y2="6" z2="276" type="air"/>
+				<DrawLine x1="78" y1="4" z1="227" x2="74" y2="4" z2="217" type="stone"/>
+				<DrawCuboid x1="77" y1="5" z1="226" x2="79" y2="6" z2="228" type="air"/>
+				<DrawCuboid x1="73" y1="5" z1="216" x2="75" y2="6" z2="218" type="air"/>
+				<DrawLine x1="92" y1="4" z1="235" x2="111" y2="4" z2="232" type="stone"/>
+				<DrawCuboid x1="91" y1="5" z1="234" x2="93" y2="6" z2="236" type="air"/>
+				<DrawCuboid x1="110" y1="5" z1="231" x2="112" y2="6" z2="233" type="air"/>
+				<DrawLine x1="50" y1="4" z1="156" x2="65" y2="4" z2="193" type="stone"/>
+				<DrawCuboid x1="49" y1="5" z1="155" x2="51" y2="6" z2="157" type="air"/>
+				<DrawCuboid x1="64" y1="5" z1="192" x2="66" y2="6" z2="194" type="air"/>
+				<DrawLine x1="215" y1="4" z1="96" x2="215" y2="4" z2="146" type="stone"/>
+				<DrawCuboid x1="214" y1="5" z1="95" x2="216" y2="6" z2="97" type="air"/>
+				<DrawCuboid x1="214" y1="5" z1="145" x2="216" y2="6" z2="147" type="air"/>
+				<DrawLine x1="142" y1="4" z1="181" x2="143" y2="4" z2="181" type="stone"/>
+				<DrawCuboid x1="141" y1="5" z1="180" x2="143" y2="6" z2="182" type="air"/>
+				<DrawCuboid x1="142" y1="5" z1="180" x2="144" y2="6" z2="182" type="air"/>
+				<DrawLine x1="130" y1="4" z1="68" x2="129" y2="4" z2="78" type="stone"/>
+				<DrawCuboid x1="129" y1="5" z1="67" x2="131" y2="6" z2="69" type="air"/>
+				<DrawCuboid x1="128" y1="5" z1="77" x2="130" y2="6" z2="79" type="air"/>
+				<DrawLine x1="188" y1="4" z1="209" x2="187" y2="4" z2="210" type="stone"/>
+				<DrawCuboid x1="187" y1="5" z1="208" x2="189" y2="6" z2="210" type="air"/>
+				<DrawCuboid x1="186" y1="5" z1="209" x2="188" y2="6" z2="211" type="air"/>
+				<DrawLine x1="171" y1="4" z1="192" x2="182" y2="4" z2="194" type="stone"/>
+				<DrawCuboid x1="170" y1="5" z1="191" x2="172" y2="6" z2="193" type="air"/>
+				<DrawCuboid x1="181" y1="5" z1="193" x2="183" y2="6" z2="195" type="air"/>
+				<DrawLine x1="207" y1="4" z1="233" x2="200" y2="4" z2="233" type="stone"/>
+				<DrawCuboid x1="206" y1="5" z1="232" x2="208" y2="6" z2="234" type="air"/>
+				<DrawCuboid x1="199" y1="5" z1="232" x2="201" y2="6" z2="234" type="air"/>
+				<DrawLine x1="177" y1="4" z1="84" x2="203" y2="4" z2="84" type="stone"/>
+				<DrawCuboid x1="176" y1="5" z1="83" x2="178" y2="6" z2="85" type="air"/>
+				<DrawCuboid x1="202" y1="5" z1="83" x2="204" y2="6" z2="85" type="air"/>
+				<DrawLine x1="277" y1="4" z1="354" x2="272" y2="4" z2="345" type="stone"/>
+				<DrawCuboid x1="276" y1="5" z1="353" x2="278" y2="6" z2="355" type="air"/>
+				<DrawCuboid x1="271" y1="5" z1="344" x2="273" y2="6" z2="346" type="air"/>
+				<DrawLine x1="140" y1="4" z1="88" x2="149" y2="4" z2="87" type="stone"/>
+				<DrawCuboid x1="139" y1="5" z1="87" x2="141" y2="6" z2="89" type="air"/>
+				<DrawCuboid x1="148" y1="5" z1="86" x2="150" y2="6" z2="88" type="air"/>
+				<DrawLine x1="212" y1="4" z1="266" x2="200" y2="4" z2="255" type="stone"/>
+				<DrawCuboid x1="211" y1="5" z1="265" x2="213" y2="6" z2="267" type="air"/>
+				<DrawCuboid x1="199" y1="5" z1="254" x2="201" y2="6" z2="256" type="air"/>
+				<DrawLine x1="150" y1="4" z1="99" x2="140" y2="4" z2="110" type="stone"/>
+				<DrawCuboid x1="149" y1="5" z1="98" x2="151" y2="6" z2="100" type="air"/>
+				<DrawCuboid x1="139" y1="5" z1="109" x2="141" y2="6" z2="111" type="air"/>
+				<DrawLine x1="139" y1="4" z1="230" x2="154" y2="4" z2="231" type="stone"/>
+				<DrawCuboid x1="138" y1="5" z1="229" x2="140" y2="6" z2="231" type="air"/>
+				<DrawCuboid x1="153" y1="5" z1="230" x2="155" y2="6" z2="232" type="air"/>
+				<DrawLine x1="111" y1="4" z1="125" x2="114" y2="4" z2="125" type="stone"/>
+				<DrawCuboid x1="110" y1="5" z1="124" x2="112" y2="6" z2="126" type="air"/>
+				<DrawCuboid x1="113" y1="5" z1="124" x2="115" y2="6" z2="126" type="air"/>
+				<DrawLine x1="225" y1="4" z1="174" x2="242" y2="4" z2="198" type="stone"/>
+				<DrawCuboid x1="224" y1="5" z1="173" x2="226" y2="6" z2="175" type="air"/>
+				<DrawCuboid x1="241" y1="5" z1="197" x2="243" y2="6" z2="199" type="air"/>
+				<DrawLine x1="128" y1="4" z1="102" x2="128" y2="4" z2="110" type="stone"/>
+				<DrawCuboid x1="127" y1="5" z1="101" x2="129" y2="6" z2="103" type="air"/>
+				<DrawCuboid x1="127" y1="5" z1="109" x2="129" y2="6" z2="111" type="air"/>
+				<DrawLine x1="134" y1="4" z1="138" x2="150" y2="4" z2="175" type="stone"/>
+				<DrawCuboid x1="133" y1="5" z1="137" x2="135" y2="6" z2="139" type="air"/>
+				<DrawCuboid x1="149" y1="5" z1="174" x2="151" y2="6" z2="176" type="air"/>
+				<DrawLine x1="141" y1="4" z1="66" x2="149" y2="4" z2="73" type="stone"/>
+				<DrawCuboid x1="140" y1="5" z1="65" x2="142" y2="6" z2="67" type="air"/>
+				<DrawCuboid x1="148" y1="5" z1="72" x2="150" y2="6" z2="74" type="air"/>
+				<DrawLine x1="122" y1="4" z1="251" x2="123" y2="4" z2="244" type="stone"/>
+				<DrawCuboid x1="121" y1="5" z1="250" x2="123" y2="6" z2="252" type="air"/>
+				<DrawCuboid x1="122" y1="5" z1="243" x2="124" y2="6" z2="245" type="air"/>
+				<DrawLine x1="258" y1="4" z1="325" x2="236" y2="4" z2="294" type="stone"/>
+				<DrawCuboid x1="257" y1="5" z1="324" x2="259" y2="6" z2="326" type="air"/>
+				<DrawCuboid x1="235" y1="5" z1="293" x2="237" y2="6" z2="295" type="air"/>
+			</DrawingDecorator>
+			<ServerQuitFromTimeUp timeLimitMs="1000"/>
+			<ServerQuitWhenAnyAgentFinishes/>
+		</ServerHandlers>
+	</ServerSection>
+
+	<AgentSection mode="Survival">
+		<Name>Malminion</Name>
+		<AgentStart>
+			<Placement x="251.0" y="9" z="48.0" yaw="0"/>
+			<Inventory>
+				<InventoryItem slot="0" type="torch"/>
+			</Inventory>
+		</AgentStart>
+		<AgentHandlers>
+			<ObservationFromFullStats/>
+			<ContinuousMovementCommands turnSpeedDegs="180">
+				<ModifierList type="deny-list">
+					<command>attack</command>
+				</ModifierList>
+			</ContinuousMovementCommands>
+		</AgentHandlers>
+	</AgentSection>
+</Mission>

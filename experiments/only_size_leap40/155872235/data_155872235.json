@@ -1,0 +1,12 @@
+{
+"random_seed": false,
+"seed": 155872235,
+"type": "evo-dungeon",
+"method": "GraphStream",
+"size": "1607x2277",
+"border": "5",
+"fill_percent": 0,
+"wall_threshold": 0,
+"room_threshold": 0,
+"smooth": 0
+}

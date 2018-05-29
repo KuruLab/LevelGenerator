@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<MissionInit xmlns="http://ProjectMalmo.microsoft.com" PlatformVersion="0.34.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ProjectMalmo.microsoft.com MissionInit.xsd">
+  <Mission>
+    <About>
+      <Summary>Everyday Minecraft life: survival</Summary>
+    </About>
+    <ServerSection>
+      <ServerHandlers>
+        <DefaultWorldGenerator destroyAfterUse="true" forceReset="false" seed=""/>
+        <ServerQuitFromTimeUp description="out_of_time" timeLimitMs="3000000"/>
+        <ServerQuitWhenAnyAgentFinishes description=""/>
+      </ServerHandlers>
+    </ServerSection>
+    <AgentSection mode="Survival">
+      <Name>Rover</Name>
+      <AgentStart>
+        <Placement pitch="0" x="-203.5" y="81" yaw="0" z="217.5"/>
+      </AgentStart>
+      <AgentHandlers>
+        <ObservationFromFullStats/>
+        <VideoProducer viewpoint="0" want_depth="false">
+          <Width>480</Width>
+          <Height>320</Height>
+        </VideoProducer>
+        <RewardForMissionEnd dimension="0" rewardForDeath="-10000" rewardForDeathDistribution="">
+          <Reward description="found_goal" distribution="" reward="1000"/>
+          <Reward description="out_of_time" distribution="" reward="-1000"/>
+        </RewardForMissionEnd>
+        <ContinuousMovementCommands turnSpeedDegs="180"/>
+        <AgentQuitFromTouchingBlockType>
+          <Block description="found_goal" type="gold_block diamond_block redstone_block"/>
+        </AgentQuitFromTouchingBlockType>
+      </AgentHandlers>
+    </AgentSection>
+  </Mission>
+  <ExperimentUID/>
+  <ClientRole>0</ClientRole>
+  <ClientAgentConnection>
+    <ClientIPAddress>127.0.0.1</ClientIPAddress>
+    <ClientMissionControlPort>10000</ClientMissionControlPort>
+    <ClientCommandsPort>0</ClientCommandsPort>
+    <AgentIPAddress>127.0.0.1</AgentIPAddress>
+    <AgentMissionControlPort>10525</AgentMissionControlPort>
+    <AgentVideoPort>10942</AgentVideoPort>
+    <AgentDepthPort>0</AgentDepthPort>
+    <AgentLuminancePort>0</AgentLuminancePort>
+    <AgentObservationsPort>10400</AgentObservationsPort>
+    <AgentRewardsPort>10208</AgentRewardsPort>
+    <AgentColourMapPort>0</AgentColourMapPort>
+  </ClientAgentConnection>
+</MissionInit>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<MissionInit xmlns="http://ProjectMalmo.microsoft.com" PlatformVersion="0.34.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ProjectMalmo.microsoft.com MissionInit.xsd">
+  <Mission>
+    <About>
+      <Summary>Dungeon!</Summary>
+    </About>
+    <ServerSection>
+      <ServerInitialConditions>
+        <Time>
+          <StartTime>12000</StartTime>
+          <AllowPassageOfTime>false</AllowPassageOfTime>
+        </Time>
+        <Weather>clear</Weather>
+      </ServerInitialConditions>
+      <ServerHandlers>
+        <FlatWorldGenerator destroyAfterUse="true" forceReset="false" generatorString="3;7,2*3,2;1;village" seed=""/>
+        <DrawingDecorator>
+          <DrawCuboid type="stone" x1="154" x2="200" y1="0" y2="0" z1="210" z2="256"/>
+          <DrawCuboid type="stone" x1="240" x2="260" y1="0" y2="0" z1="198" z2="218"/>
+          <DrawCuboid type="stone" x1="212" x2="240" y1="0" y2="0" z1="266" z2="294"/>
+          <DrawCuboid type="stone" x1="256" x2="276" y1="0" y2="0" z1="325" z2="345"/>
+          <DrawCuboid type="stone" x1="207" x2="223" y1="0" y2="0" z1="225" z2="241"/>
+          <DrawCuboid type="stone" x1="182" x2="206" y1="0" y2="0" z1="185" z2="209"/>
+          <DrawCuboid type="stone" x1="242" x2="258" y1="0" y2="0" z1="265" z2="281"/>
+          <DrawCuboid type="stone" x1="143" x2="171" y1="0" y2="0" z1="175" z2="203"/>
+          <DrawCuboid type="stone" x1="111" x2="139" y1="0" y2="0" z1="216" z2="244"/>
+          <DrawCuboid type="stone" x1="201" x2="229" y1="0" y2="0" z1="146" z2="174"/>
+          <DrawCuboid type="stone" x1="114" x2="142" y1="0" y2="0" z1="110" z2="138"/>
+          <DrawCuboid type="stone" x1="241" x2="261" y1="0" y2="0" z1="38" z2="58"/>
+          <DrawCuboid type="stone" x1="203" x2="227" y1="0" y2="0" z1="72" z2="96"/>
+          <DrawCuboid type="stone" x1="58" x2="82" y1="0" y2="0" z1="193" z2="217"/>
+          <DrawCuboid type="stone" x1="149" x2="177" y1="0" y2="0" z1="71" z2="99"/>
+          <DrawCuboid type="stone" x1="72" x2="92" y1="0" y2="0" z1="227" z2="247"/>
+          <DrawCuboid type="stone" x1="37" x2="57" y1="0" y2="0" z1="136" z2="156"/>
+          <DrawCuboid type="stone" x1="91" x2="111" y1="0" y2="0" z1="116" z2="136"/>
+          <DrawCuboid type="stone" x1="116" x2="140" y1="0" y2="0" z1="78" z2="102"/>
+          <DrawCuboid type="stone" x1="109" x2="133" y1="0" y2="0" z1="251" z2="275"/>
+          <DrawCuboid type="stone" x1="121" x2="141" y1="0" y2="0" z1="48" z2="68"/>
+          <DrawCuboid type="stone" x1="113" x2="129" y1="0" y2="0" z1="280" z2="296"/>
+          <DrawCuboid type="stone" x1="126" x2="142" y1="0" y2="0" z1="169" z2="185"/>
+          <DrawCuboid type="stone" x1="275" x2="291" y1="0" y2="0" z1="354" z2="370"/>
+          <DrawCuboid type="stone" x1="218" x2="234" y1="0" y2="0" z1="302" z2="318"/>
+          <DrawCuboid type="stone" x1="161" x2="177" y1="0" y2="0" z1="270" z2="286"/>
+        </DrawingDecorator>
+        <ServerQuitFromTimeUp description="" timeLimitMs="30000"/>
+        <ServerQuitWhenAnyAgentFinishes description=""/>
+      </ServerHandlers>
+    </ServerSection>
+    <AgentSection mode="Survival">
+      <Name>Malminion</Name>
+      <AgentStart>
+        <Placement pitch="0" x="251" y="5" yaw="0" z="48"/>
+        <Inventory>
+          <InventoryItem quantity="1" slot="0" type="torch"/>
+        </Inventory>
+      </AgentStart>
+      <AgentHandlers>
+        <ObservationFromFullStats/>
+        <ContinuousMovementCommands turnSpeedDegs="180">
+          <ModifierList type="deny-list">
+            <command>attack</command>
+          </ModifierList>
+        </ContinuousMovementCommands>
+      </AgentHandlers>
+    </AgentSection>
+  </Mission>
+  <ExperimentUID/>
+  <ClientRole>0</ClientRole>
+  <ClientAgentConnection>
+    <ClientIPAddress>127.0.0.1</ClientIPAddress>
+    <ClientMissionControlPort>10000</ClientMissionControlPort>
+    <ClientCommandsPort>0</ClientCommandsPort>
+    <AgentIPAddress>127.0.0.1</AgentIPAddress>
+    <AgentMissionControlPort>10668</AgentMissionControlPort>
+    <AgentVideoPort>0</AgentVideoPort>
+    <AgentDepthPort>0</AgentDepthPort>
+    <AgentLuminancePort>0</AgentLuminancePort>
+    <AgentObservationsPort>10235</AgentObservationsPort>
+    <AgentRewardsPort>10356</AgentRewardsPort>
+    <AgentColourMapPort>0</AgentColourMapPort>
+  </ClientAgentConnection>
+</MissionInit>

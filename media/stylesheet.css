@@ -1,0 +1,73 @@
+graph {
+    fill-color: white;
+}
+
+node {
+    shape: box;
+    fill-color: gray;
+    stroke-mode: plain;
+    stroke-color: gray;
+    text-mode: normal;
+    text-size: 16;
+}
+
+node.standard {
+    shape: box;
+    fill-mode: dyn-plain;
+    fill-color: green, yellow, red;
+    stroke-mode: plain;
+    stroke-color: gray;
+    text-mode: normal;
+    text-size: 16;
+}
+
+node.start {
+    shape: box;
+    fill-color: cyan;
+    stroke-mode: plain;
+    stroke-color: black;
+    text-style: bold;
+    text-mode: normal;
+    text-size: 16;
+}
+
+node.boss {
+    shape: box;
+    fill-color: purple;
+    stroke-mode: plain;
+    stroke-color: gray;
+    text-style: bold;
+    text-mode: normal;
+    text-size: 16;
+}
+
+node:clicked {
+    fill-color: red;
+}
+
+edge {
+    size: 1px;
+    fill-color: black;
+    text-style: bold;
+    text-color: red;
+    text-background-mode: rounded-box;
+    text-size: 16;
+}
+
+edge.notintree {
+    size: 1px;
+    fill-color: black;
+    text-style: bold;
+    text-color: red;
+    text-background-mode: rounded-box;
+    text-size: 16;
+}
+
+edge.intree {
+    size: 1px;
+    fill-color: black;
+    text-style: bold;
+    text-color: red;
+    text-background-mode: rounded-box;
+    text-size: 16;
+}
