@@ -1,8 +1,5 @@
 package evoGraph;
 
-
-import graphstream.*;
-import evoGraph.Config;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Arrays;
