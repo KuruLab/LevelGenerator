@@ -1,6 +1,6 @@
 package parallelEvaluation;
 
-import evoGraph.GeneticAlgorithm;
+import evoLevel.LevelGA;
 
 /**
  *
@@ -8,10 +8,10 @@ import evoGraph.GeneticAlgorithm;
  */
 public class Notifier implements Runnable {
 
-    public GeneticAlgorithm ga;
+    public LevelGA ga;
     public boolean finished;
 
-    public Notifier(GeneticAlgorithm ga) {
+    public Notifier(LevelGA ga) {
         this.ga = ga;
         this.finished = false;
     }

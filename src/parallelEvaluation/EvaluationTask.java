@@ -5,10 +5,10 @@
  */
 package parallelEvaluation;
 
-import evoGraph.Config;
-import evoGraph.Evaluation;
-import evoGraph.GraphIndividual;
-import evoGraph.RefinementOperator;
+import evoLevel.LevelConfig;
+import evoLevel.LevelEvaluation;
+import evoLevel.LevelIndividual;
+import evoLevel.RefinementOperator;
 import java.util.Random;
 
 /**
@@ -19,16 +19,16 @@ public class EvaluationTask implements Runnable {
 
     protected boolean refine;
     protected double[] fitness;
-    protected GraphIndividual individual;
+    protected LevelIndividual individual;
 
-    public EvaluationTask(boolean refine, GraphIndividual individual) {
+    public EvaluationTask(boolean refine, LevelIndividual individual) {
         this.refine = refine;
         this.individual = individual;
     }
 
     @Override
     public void run() {
-        Evaluation eva = new Evaluation();
+        LevelEvaluation eva = new LevelEvaluation();
         fitness = eva.detailedFitness(individual, false);
         individual.setFitness(fitness[1]);
         if (refine) {
@@ -46,11 +46,11 @@ public class EvaluationTask implements Runnable {
         this.fitness = fitness;
     }
 
-    public GraphIndividual getIndividual() {
+    public LevelIndividual getIndividual() {
         return individual;
     }
 
-    public void setIndividual(GraphIndividual individual) {
+    public void setIndividual(LevelIndividual individual) {
         this.individual = individual;
     }
 

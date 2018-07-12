@@ -5,7 +5,7 @@
  */
 package experiments;
 
-import evoGraph.Config;
+import evoLevel.LevelConfig;
 
 /**
  *
@@ -26,8 +26,8 @@ public class AcyclicExperiment extends Experiment{
     public void setup(){
         super.setup();
         
-        Config.maxLinksPerStep = 1; // m
-        Config.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\acyclic\\";
+        LevelConfig.maxLinksPerStep = 1; // m
+        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\acyclic\\";
     }
     
 }

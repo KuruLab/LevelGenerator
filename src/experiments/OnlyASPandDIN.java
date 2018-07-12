@@ -5,7 +5,7 @@
  */
 package experiments;
 
-import evoGraph.Config;
+import evoLevel.LevelConfig;
 
 /**
  *
@@ -25,17 +25,17 @@ public class OnlyASPandDIN extends Experiment{
     public void setup(){
         super.setup();
         
-        Config.useMaximizeNodeCount = false;
-        Config.minNodeCount = 25;
-        Config.maxNodeCount = 50;
+        LevelConfig.useMaximizeNodeCount = false;
+        LevelConfig.minNodeCount = 25;
+        LevelConfig.maxNodeCount = 50;
         
-        Config.useDesiredAngles = false;
-        Config.useAverageShortestPath = true; 
-        Config.useIdealNonLinearity = true; 
-        Config.desiredAngles = new int[0]; 
+        LevelConfig.useDesiredAngles = false;
+        LevelConfig.useAverageShortestPath = true; 
+        LevelConfig.useIdealNonLinearity = true; 
+        LevelConfig.desiredAngles = new int[0]; 
         
-        Config.idealNonLinearity = 3;
+        LevelConfig.idealNonLinearity = 3;
         
-        Config.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_asp_and_din\\";
+        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_asp_and_din\\";
     }
 }

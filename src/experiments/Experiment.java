@@ -5,14 +5,13 @@
  */
 package experiments;
 
-import evoGraph.Config;
-import evoGraph.Decoder;
-import evoGraph.Evaluation;
-import evoGraph.EvoJSONFileReader;
-import evoGraph.GeneticAlgorithm;
-import evoGraph.GraphIndividual;
-import evoGraph.SingleRunStatistics;
-import extendedMetaZelda.DungeonGenerator;
+import evoLevel.LevelConfig;
+import evoLevel.LevelDecoder;
+import evoLevel.LevelEvaluation;
+import io.EvoJSONFileReader;
+import evoLevel.LevelGA;
+import evoLevel.LevelIndividual;
+import evoLevel.LevelStatistics;
 import graphstream.GraphStreamUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +44,7 @@ public class Experiment {
     public DescriptiveStatistics uas; // Undesired Angle Sum
     public DescriptiveStatistics area; // Area, width x height
     
-    public DescriptiveStatistics din; // Distance from Ideal Nonlinearity
+    //public DescriptiveStatistics din; // Distance from Ideal Nonlinearity
     
     public static void main(String args[]){  
        Experiment exp = new Experiment();
@@ -60,7 +59,7 @@ public class Experiment {
         fitness = new DescriptiveStatistics(executions);
         asp = new DescriptiveStatistics(executions);
         uas = new DescriptiveStatistics(executions);
-        din = new DescriptiveStatistics(executions);
+        //din = new DescriptiveStatistics(executions);
         area = new DescriptiveStatistics(executions);
     }
     
@@ -72,58 +71,58 @@ public class Experiment {
     }
     
     public void setup(){
-        Config.borderSize = 15;
-        Config.edgeSize = 6;
+        LevelConfig.borderSize = 15;
+        LevelConfig.edgeSize = 6;
 
-        Config.minNodeCount = 25;
-        Config.maxNodeCount = 100;
+        LevelConfig.minNodeCount = 25;
+        LevelConfig.maxNodeCount = 100;
 
-        Config.minEdgeDistance = 5;
+        LevelConfig.minEdgeDistance = 5;
     
-        Config.areaIntersectionPenalty =  100;
-        Config.edgeIntersectionPenalty = 1000;
-        Config.nodeCountPenalty        = 1000;
-        Config.edgeDistancePentalty    = 1000;
+        LevelConfig.areaIntersectionPenalty =  100;
+        LevelConfig.edgeIntersectionPenalty = 1000;
+        LevelConfig.nodeCountPenalty        = 1000;
+        LevelConfig.edgeDistancePentalty    = 1000;
 
-        Config.minNodeSize = 15.0;
-        Config.maxNodeSize = 30.0;
-        Config.scaleFactor = 50;
-        Config.expansionProb = 0.05; // used only on graphX crossover
+        LevelConfig.minNodeSize = 15.0;
+        LevelConfig.maxNodeSize = 30.0;
+        LevelConfig.scaleFactor = 50;
+        LevelConfig.expansionProb = 0.05; // used only on graphX crossover
         
-        Config.barabasiFactor = 5; // delta
-        Config.maxLinksPerStep = 2; // m
+        LevelConfig.barabasiFactor = 5; // delta
+        LevelConfig.maxLinksPerStep = 2; // m
 
-        Config.crossoverProb  =  0.90;
-        Config.mutationProb   =  0.10;
-        Config.refinementProb =  0.01;
+        LevelConfig.crossoverProb  =  0.90;
+        LevelConfig.mutationProb   =  0.10;
+        LevelConfig.refinementProb =  0.01;
 
-        Config.nodeXLeap = 1.1;
-        Config.nodeYLeap = 1.1;
-        Config.nodeZLeap = 0;
+        LevelConfig.nodeXLeap = 1.1;
+        LevelConfig.nodeYLeap = 1.1;
+        LevelConfig.nodeZLeap = 0;
 
-        Config.popSize = 100;
-        Config.maxGen  = 100;
+        LevelConfig.popSize = 100;
+        LevelConfig.maxGen  = 100;
         
-        Config.desiredAngles = new int[3];
-        Config.desiredAngles[0] = 0;
-        Config.desiredAngles[1] = 90;
-        Config.desiredAngles[2] = 180;
+        LevelConfig.desiredAngles = new int[3];
+        LevelConfig.desiredAngles[0] = 0;
+        LevelConfig.desiredAngles[1] = 90;
+        LevelConfig.desiredAngles[2] = 180;
         
-        Config.idealNonLinearity = 3;
+        LevelConfig.idealNonLinearity = 3;
     
-        Config.useDesiredAngles = true;
-        Config.useAverageShortestPath = true;
-        Config.useMaximizeNodeCount = true;
-        Config.useIdealNonLinearity = true;
+        LevelConfig.useDesiredAngles = true;
+        LevelConfig.useAverageShortestPath = true;
+        LevelConfig.useMaximizeNodeCount = true;
+        LevelConfig.useIdealNonLinearity = true;
         
-        Config.useRefinement = true;
+        LevelConfig.useRefinement = true;
         
-        Config.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\stantard\\";
-        Config.numberOfProcess = 16;
+        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\stantard\\";
+        LevelConfig.numberOfProcess = 16;
     }
     
     public void verifyFolder(){
-        File folder = new File(Config.folder);
+        File folder = new File(LevelConfig.folder);
         if(!folder.exists())
             folder.mkdir();
         ArrayList<File> results = new ArrayList<>();
@@ -159,19 +158,19 @@ public class Experiment {
             System.out.println("\n++Execution number "+(i+1)+"++\n");
             
             long initialTime = System.currentTimeMillis();
-            GeneticAlgorithm ga = new GeneticAlgorithm();
+            LevelGA ga = new LevelGA();
             ga.run();
             long finalTime = System.currentTimeMillis();
             time.addValue(finalTime - initialTime);
             
-            Evaluation eva = new Evaluation();
+            LevelEvaluation eva = new LevelEvaluation();
             double[] detailedFitness = eva.detailedFitness(ga.getBestIndividual(), true);
-            Decoder barabasiDecoder = new Decoder(ga.getBestIndividual());
-            GraphIndividual barabasiIndividual = barabasiDecoder.barabasiAlbertGraph();
-            Decoder graphDecoder = new Decoder(barabasiIndividual);
+            LevelDecoder barabasiDecoder = new LevelDecoder(ga.getBestIndividual());
+            LevelIndividual barabasiIndividual = barabasiDecoder.barabasiAlbertGraph();
+            LevelDecoder graphDecoder = new LevelDecoder(barabasiIndividual);
             graph[i] = graphDecoder.decode();
-            DungeonGenerator dgg = new DungeonGenerator(graph[i]);
-            dgg.generate();
+            //DungeonGenerator dgg = new DungeonGenerator(graph[i]);
+            //dgg.generate();
             ga.exportGraph(graph[i]);
             exportSizePerGen(graph[i], ga.getStats());
         }
@@ -179,7 +178,7 @@ public class Experiment {
             time.addValue(0.0);
     }
     
-    public void exportSizePerGen(Graph g, SingleRunStatistics stats){
+    public void exportSizePerGen(Graph g, LevelStatistics stats){
         String genLine = "gen: ";
         String sizeLine = "size: ";
         for(int i = 0; i < stats.getBestGenerationArchive().size(); i++)
@@ -188,7 +187,7 @@ public class Experiment {
             sizeLine += stats.getBestGraphArchive().get(i).getNodes().size()+" ";
         
         String hashString = ""+g.hashCode();
-        File dir = new File(Config.folder, hashString);
+        File dir = new File(LevelConfig.folder, hashString);
         System.out.println("Exporting Stats\n"+
                 dir+"\\sizePerGen_"+g.hashCode()+".txt");
         try {
@@ -204,7 +203,7 @@ public class Experiment {
     }
     
     public void readResults(){
-        File folder = new File(Config.folder);
+        File folder = new File(LevelConfig.folder);
         ArrayList<File> results = new ArrayList<>();
         for(int i = 0; i < folder.listFiles().length; i++){
             if(folder.listFiles()[i].isDirectory())
@@ -218,7 +217,7 @@ public class Experiment {
         size = new DescriptiveStatistics(executions);
         asp = new DescriptiveStatistics(executions);
         uas = new DescriptiveStatistics(executions);
-        din = new DescriptiveStatistics(executions);
+        //din = new DescriptiveStatistics(executions);
         area = new DescriptiveStatistics(executions);
         
         double min = Double.MAX_VALUE;
@@ -232,7 +231,7 @@ public class Experiment {
         int[] maxBounds = new int[3];
         
         Hashtable<Integer, ArrayList<Integer>> sizePerGeneration = new Hashtable();
-        for(int i = 0; i < Config.maxGen; i++)
+        for(int i = 0; i < LevelConfig.maxGen; i++)
             sizePerGeneration.put(i, new ArrayList<>());
 
         for(int i = 0; i < results.size(); i++){
@@ -247,9 +246,9 @@ public class Experiment {
             fitness.addValue(detailedFitness[1]);
             asp.addValue(detailedFitness[6]);
             uas.addValue(detailedFitness[7]);
-            din.addValue(detailedFitness[8]);
+            //din.addValue(detailedFitness[8]);
             
-            double graphArea = (new GraphStreamUtil()).getGraphAreaWithBorder(graph[i]);
+            double graphArea = (new GraphStreamUtil()).getGraphAreaWithBorder(graph[i], LevelConfig.borderSize);
             area.addValue(graphArea);
             
             if(detailedFitness[1] < min){
@@ -263,11 +262,11 @@ public class Experiment {
             
             if(graphArea < mingArea){
                 mingArea = graphArea;
-                minBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i]);
+                minBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], LevelConfig.borderSize);
             }
             if(graphArea > maxgArea){
                 maxgArea = graphArea;
-                maxBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i]);
+                maxBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], LevelConfig.borderSize);
             }
             // Size per Generation
             String spgName = dir.getPath()+File.separator+"sizePerGen_"+dir.getName()+".txt";
@@ -311,10 +310,10 @@ public class Experiment {
         double stdUAS = uas.getStandardDeviation();
         double maxUAS = uas.getMax();
         
-        double minDIN = din.getMin();
-        double meanDIN = din.getMean();
-        double stdDIN = din.getStandardDeviation();
-        double maxDIN = din.getMax();
+        //double minDIN = din.getMin();
+        //double meanDIN = din.getMean();
+        //double stdDIN = din.getStandardDeviation();
+        //double maxDIN = din.getMax();
         
         double minTime = time.getMin();
         double meanTime = time.getMean();
@@ -329,7 +328,7 @@ public class Experiment {
         String tableLine =   "N & $"+String.format("%.3f",minS)+"$ & $"+String.format("%.3f",meanS)+"_{ \\pm "+String.format("%.3f",stdS)+"}$ & $"+String.format("%.3f",maxS)+"$ \\\\\n"
                            + "ASP & $"+String.format("%.3f",minASP)+"$ & $"+String.format("%.3f",meanASP)+"_{ \\pm "+String.format("%.3f",stdASP)+"}$ & $"+String.format("%.3f",maxASP)+"$ \\\\\n"
                            + "UAS & $"+String.format("%.3f",minUAS)+"$ & $"+String.format("%.3f",meanUAS)+"_{ \\pm "+String.format("%.3f",stdUAS)+"}$ & $"+String.format("%.3f",maxUAS)+"$ \\\\\n"
-                           + "DIN & $"+String.format("%.3f",minDIN)+"$ & $"+String.format("%.3f",meanDIN)+"_{ \\pm "+String.format("%.3f",stdDIN)+"}$ & $"+String.format("%.3f",maxDIN)+"$ \\\\\n"
+                           //+ "DIN & $"+String.format("%.3f",minDIN)+"$ & $"+String.format("%.3f",meanDIN)+"_{ \\pm "+String.format("%.3f",stdDIN)+"}$ & $"+String.format("%.3f",maxDIN)+"$ \\\\\n"
                            + "Fitness & $"+String.format("%.3f",minFitness)+"$ & $"+String.format("%.3f",meanFitness)+"_{ \\pm "+String.format("%.3f",stdFitness)+"}$ & $"+String.format("%.3f",maxFitness)+"$ \\\\\n"
                            + "Time (s) & $"+String.format("%.3f",minTime/1000)+"$ & $"+String.format("%.3f",meanTime/1000)+"_{ \\pm "+String.format("%.3f",stdTime/1000)+"}$ & $"+String.format("%.3f",maxTime/1000)+"$\\\\\n"
                            + "Area & $"+String.format("%.3f",minArea)+"$ & $"+String.format("%.3f",meanArea)+"_{ \\pm "+String.format("%.3f",stdArea)+"}$ & $"+String.format("%.3f",maxArea)+"$\\\\\n"
@@ -345,17 +344,17 @@ public class Experiment {
                 + "Max Area: "+maxgArea+" Dimensions: "+Arrays.toString(maxBounds)+"\n";
                     
         try {
-            PrintWriter pw = new PrintWriter(Config.folder+"table.txt");
+            PrintWriter pw = new PrintWriter(LevelConfig.folder+"table.txt");
             pw.printf(tableLine);
             pw.flush();
             pw.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Experiment.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Results done at: "+Config.folder+"/table.txt");
+        System.out.println("Results done at: "+LevelConfig.folder+"/table.txt");
         
         String sizePerGen = "";
-        for(int i = 0; i < Config.maxGen; i++){
+        for(int i = 0; i < LevelConfig.maxGen; i++){
             ArrayList<Integer> list = sizePerGeneration.get(i);
             sizePerGen += i+" ";
             for(int j = 0; j < list.size(); j++){
@@ -364,7 +363,7 @@ public class Experiment {
             sizePerGen += "\n";
         }
         try {
-            PrintWriter pw = new PrintWriter(Config.folder+"sizePerGenMatrix.txt");
+            PrintWriter pw = new PrintWriter(LevelConfig.folder+"sizePerGenMatrix.txt");
             pw.printf(sizePerGen);
             pw.flush();
             pw.close();
@@ -374,10 +373,10 @@ public class Experiment {
     }
     
     public double[] evaluate(Graph graph){
-        Decoder encoder = new Decoder(graph);
-        GraphIndividual encodedIndividual = encoder.encode();
+        LevelDecoder encoder = new LevelDecoder(graph);
+        LevelIndividual encodedIndividual = encoder.encode();
         
-        Evaluation eva = new Evaluation();
+        LevelEvaluation eva = new LevelEvaluation();
         double[] detailedFitness = eva.detailedFitness(encodedIndividual, false);
         return detailedFitness;
     }

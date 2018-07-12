@@ -5,7 +5,7 @@
  */
 package experiments;
 
-import evoGraph.Config;
+import evoLevel.LevelConfig;
 
 /**
  *
@@ -25,22 +25,22 @@ public class OnlyMaximizeSizeExperiment extends Experiment{
     public void setup(){
         super.setup();
         
-        Config.useMaximizeNodeCount = true;
-        Config.minNodeCount = 25;
-        Config.maxNodeCount = 1000;
-        Config.maxGen       = 1000;
-        Config.useDesiredAngles = false;
-        Config.useAverageShortestPath = false; 
-        Config.useIdealNonLinearity = false; 
-        Config.desiredAngles = new int[0];
+        LevelConfig.useMaximizeNodeCount = true;
+        LevelConfig.minNodeCount = 25;
+        LevelConfig.maxNodeCount = 1000;
+        LevelConfig.maxGen       = 1000;
+        LevelConfig.useDesiredAngles = false;
+        LevelConfig.useAverageShortestPath = false; 
+        LevelConfig.useIdealNonLinearity = false; 
+        LevelConfig.desiredAngles = new int[0];
         
-        Config.useRefinement = false;
-        Config.refinementProb =  0.0;
+        LevelConfig.useRefinement = false;
+        LevelConfig.refinementProb =  0.0;
         
-        Config.nodeXLeap = 1.1;
-        Config.nodeYLeap = 1.1;
-        Config.nodeZLeap = 0;
+        LevelConfig.nodeXLeap = 1.1;
+        LevelConfig.nodeYLeap = 1.1;
+        LevelConfig.nodeZLeap = 0;
         
-        Config.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_size_g1000\\";
+        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_size_g1000\\";
     }
 }
