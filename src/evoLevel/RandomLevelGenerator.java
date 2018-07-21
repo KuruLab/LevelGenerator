@@ -5,6 +5,7 @@
  */
 package evoLevel;
 
+import config.GeneralConfig;
 import java.util.HashMap;
 import java.util.Random;
 import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
@@ -15,7 +16,7 @@ import org.graphstream.ui.geom.Point3;
 import static org.graphstream.ui.graphicGraph.GraphPosLengthUtils.nodePointPosition;
 import org.graphstream.ui.layout.Layout;
 import org.graphstream.ui.layout.springbox.implementations.SpringBox;
-import graphstream.GraphStreamUtil;
+import util.GraphStreamUtil;
 
 /**
  *
@@ -68,7 +69,7 @@ public class RandomLevelGenerator {
         while(layout.getStabilization() < 0.95){
             layout.compute();
         }
-        gUtil.scalePosition(g, LevelConfig.borderSize, LevelConfig.scaleFactor, true);
+        gUtil.scalePosition(g, GeneralConfig.borderSize, LevelConfig.scaleFactor, true);
         correctInvalidNodes(g);
         /*// printing for debug
         for(Node node : g.getEachNode()){
@@ -104,7 +105,7 @@ public class RandomLevelGenerator {
         while(layout.getStabilization() < 0.95){
             layout.compute();
         }
-        util.scalePosition(g, LevelConfig.borderSize, LevelConfig.scaleFactor, true);
+        util.scalePosition(g, GeneralConfig.borderSize, LevelConfig.scaleFactor, true);
         correctInvalidNodes(g);
         
         return g;
@@ -128,12 +129,12 @@ public class RandomLevelGenerator {
             Point3 point = nodePointPosition(node);
             while(map.containsKey(point)){
                 // in case of duplicated ID (in other words, duplicated coordinates), find a random one within the width x height dimension
-                int minX = (int) Math.max(LevelConfig.borderSize, point.x - (double) node.getAttribute("width"));
-                int maxX = (int) Math.min(point.x + (double) node.getAttribute("width"), width - LevelConfig.borderSize);
+                int minX = (int) Math.max(GeneralConfig.borderSize, point.x - (double) node.getAttribute("width"));
+                int maxX = (int) Math.min(point.x + (double) node.getAttribute("width"), width - GeneralConfig.borderSize);
                 point.x = rng.nextInt(maxX - minX) + minX;
                 
-                int minY = (int) Math.max(LevelConfig.borderSize, point.y - (double) node.getAttribute("height"));
-                int maxY = (int) Math.min(point.y + (double) node.getAttribute("height"), height - LevelConfig.borderSize);
+                int minY = (int) Math.max(GeneralConfig.borderSize, point.y - (double) node.getAttribute("height"));
+                int maxY = (int) Math.min(point.y + (double) node.getAttribute("height"), height - GeneralConfig.borderSize);
                 point.y = rng.nextInt(maxY - minY) + minY;
             }
             map.put(point, node.getId());

@@ -5,10 +5,11 @@
  */
 package tests;
 
+import config.GeneralConfig;
 import evoLevel.LevelConfig;
-import util.LevelToolkit;
-import io.EvoJSONFileWriter;
-import image.LevelImageBuilder;
+import util.LevelUtil;
+import image.MapImageBuilder;
+import io.LevelFileWriter;
 
 import java.io.File;
 import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
@@ -101,9 +102,9 @@ public class DebugGraphGenerator {
         graph.getNode("T").setAttribute("xyz", 10.0, 18.0, 0.0);
         graph.getNode("U").setAttribute("xyz", 10.0, 19.0, 0.0);
         
-        LevelToolkit.normalizeNodesSizes(graph, LevelConfig.minNodeSize, LevelConfig.maxNodeSize);
+        LevelUtil.normalizeNodesSizes(graph, LevelConfig.minNodeSize, LevelConfig.maxNodeSize);
         setupStyle(graph);
-        LevelToolkit.scalePosition(graph, LevelConfig.borderSize, LevelConfig.scaleFactor, true);
+        LevelUtil.scalePosition(graph, GeneralConfig.borderSize, LevelConfig.scaleFactor, true);
         
         
         Viewer v = graph.display(false);
@@ -149,17 +150,17 @@ public class DebugGraphGenerator {
             maxX = (int) Math.max(maxX, p.x + ((double) node.getAttribute("width")/2.0f));
             maxY = (int) Math.max(maxY, p.y + ((double) node.getAttribute("height")/2.0f));
         }
-        EvoJSONFileWriter fw = new EvoJSONFileWriter(g);
+        LevelFileWriter fw = new LevelFileWriter(g, LevelConfig.folder, graphName);
         System.out.println("Exporting Debug Map\n"+
-                dir+"\\data_"+graphName+".json\n"+
-                dir+"\\map_"+graphName+".json");
-        fw.exportDataJSON(dir+"\\data_"+graphName+".json",
-                "GraphStream", maxX, maxY, false);
-        fw.exportMapJSON(dir+"\\map_"+graphName+".json",
-                "Evolutionary"+BarabasiAlbertGenerator.class.getSimpleName(), false);
+                //dir+"\\data_"+graphName+".json\n"+
+                dir+"\\level_"+graphName+".json");
+        //fw.exportDataJSON(dir+"\\data_"+graphName+".json",
+        //        "GraphStream", maxX, maxY, false);
+        fw.exportMapJSON("Evolutionary"+BarabasiAlbertGenerator.class.getSimpleName(),
+                 maxX, maxY, GeneralConfig.borderSize, false);
         
         // export PNG
-        LevelImageBuilder gib = new LevelImageBuilder(dir+"\\img_"+graphName+".png");
+        MapImageBuilder gib = new MapImageBuilder(dir+"\\img_"+graphName+".png");
         gib.buildImage(g);
     }
     

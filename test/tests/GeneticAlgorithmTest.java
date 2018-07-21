@@ -8,7 +8,6 @@ package tests;
 import evoLevel.LevelDecoder;
 import evoLevel.LevelEvaluation;
 import evoLevel.LevelGA;
-import image.LevelImageBuilder;
 import evoLevel.LevelIndividual;
 import org.graphstream.graph.implementations.DefaultGraph;
 import org.graphstream.ui.swingViewer.ViewPanel;
@@ -20,6 +19,7 @@ import org.graphstream.ui.swingViewer.ViewPanel;
 public class GeneticAlgorithmTest {
     
     public static void main(String[] agrs){
+        long initialTime = System.currentTimeMillis();
         LevelGA ga = new LevelGA();
         ga.run();
         
@@ -30,6 +30,10 @@ public class GeneticAlgorithmTest {
         LevelIndividual barabasiIndividual = barabasiDecoder.barabasiAlbertGraph();
         LevelDecoder graphDecoder = new LevelDecoder(barabasiIndividual);
         DefaultGraph best = graphDecoder.decode();
+        
+        long finalTime = System.currentTimeMillis();
+        best.addAttribute("runtime", (finalTime-initialTime));
+        
         ViewPanel view = best.display(false).getDefaultView();
         
         // export json data

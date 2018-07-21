@@ -5,26 +5,22 @@
  */
 package experiments;
 
+import config.GeneralConfig;
 import evoLevel.LevelConfig;
 import evoLevel.LevelDecoder;
 import evoLevel.LevelEvaluation;
-import io.EvoJSONFileReader;
 import evoLevel.LevelGA;
 import evoLevel.LevelIndividual;
 import evoLevel.LevelStatistics;
-import graphstream.GraphStreamUtil;
+import io.LevelFileReader;
+import util.GraphStreamUtil;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Hashtable;
-import java.util.Scanner;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 import org.graphstream.graph.Graph;
 
@@ -32,11 +28,8 @@ import org.graphstream.graph.Graph;
  *
  * @author andre
  */
-public class Experiment {
+public class StandardLevelExperiment extends AbstractExperiment implements Experiment{
     
-    public int current;
-    public int executions;
-    public Graph[] graph;
     public DescriptiveStatistics time;
     public DescriptiveStatistics fitness;
     public DescriptiveStatistics size; // Size, number of nodes
@@ -47,11 +40,11 @@ public class Experiment {
     //public DescriptiveStatistics din; // Distance from Ideal Nonlinearity
     
     public static void main(String args[]){  
-       Experiment exp = new Experiment();
+       StandardLevelExperiment exp = new StandardLevelExperiment();
        exp.run();
     }
     
-    public Experiment() {
+    public StandardLevelExperiment() {
         current = 0;
         executions = 30;
         graph = new Graph[executions];
@@ -59,20 +52,21 @@ public class Experiment {
         fitness = new DescriptiveStatistics(executions);
         asp = new DescriptiveStatistics(executions);
         uas = new DescriptiveStatistics(executions);
-        //din = new DescriptiveStatistics(executions);
         area = new DescriptiveStatistics(executions);
     }
     
+    @Override
     public void run(){
         setup();
-        verifyFolder();
+        verifyFolder(LevelConfig.folder);
         execute();
         readResults();
     }
     
+    @Override
     public void setup(){
-        LevelConfig.borderSize = 15;
-        LevelConfig.edgeSize = 6;
+        GeneralConfig.borderSize = 15;
+        GeneralConfig.edgeSize = 6;
 
         LevelConfig.minNodeCount = 25;
         LevelConfig.maxNodeCount = 100;
@@ -107,52 +101,18 @@ public class Experiment {
         LevelConfig.desiredAngles[0] = 0;
         LevelConfig.desiredAngles[1] = 90;
         LevelConfig.desiredAngles[2] = 180;
-        
-        LevelConfig.idealNonLinearity = 3;
     
         LevelConfig.useDesiredAngles = true;
         LevelConfig.useAverageShortestPath = true;
         LevelConfig.useMaximizeNodeCount = true;
-        LevelConfig.useIdealNonLinearity = true;
         
         LevelConfig.useRefinement = true;
         
-        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\stantard\\";
+        LevelConfig.folder = "..\\data\\experiments\\standard\\";
         LevelConfig.numberOfProcess = 16;
     }
-    
-    public void verifyFolder(){
-        File folder = new File(LevelConfig.folder);
-        if(!folder.exists())
-            folder.mkdir();
-        ArrayList<File> results = new ArrayList<>();
-        for(int i = 0; i < folder.listFiles().length; i++){
-            if(folder.listFiles()[i].isDirectory())
-                results.add(folder.listFiles()[i]);
-        }
-        if(results.size() > 0){
-            int remaining = Math.max(0, executions - results.size());
-            JOptionPane.showMessageDialog(null, "There are already "+results.size()+" results in the speficied folder out of "+executions+" required.", "Atention!", JOptionPane.WARNING_MESSAGE);
-            String opt = JOptionPane.showInputDialog("Choose an option:\n"
-                    + "[0] - Proceed anyway (new "+executions+" executions).\n"
-                    + "[1] - Proceed just "+remaining+" more times.\n"
-                    + "[2] - Only read existing results.\n"
-                    + "[3] - Exit.");
-            if(opt.compareTo("0")==0){
-                current = 0;
-            }
-            else if(opt.compareTo("1")==0){
-                current = results.size();
-            }
-            else if(opt.compareTo("2")==0){
-                current = executions;
-            }
-            else{
-                System.exit(0);
-            }
-        }
-    }
-    
+ 
+    @Override
     public void execute(){
         for(int i = current; i < executions; i++){
             System.out.println("\n++Execution number "+(i+1)+"++\n");
@@ -160,8 +120,7 @@ public class Experiment {
             long initialTime = System.currentTimeMillis();
             LevelGA ga = new LevelGA();
             ga.run();
-            long finalTime = System.currentTimeMillis();
-            time.addValue(finalTime - initialTime);
+            long finalTime = System.currentTimeMillis(); 
             
             LevelEvaluation eva = new LevelEvaluation();
             double[] detailedFitness = eva.detailedFitness(ga.getBestIndividual(), true);
@@ -169,13 +128,10 @@ public class Experiment {
             LevelIndividual barabasiIndividual = barabasiDecoder.barabasiAlbertGraph();
             LevelDecoder graphDecoder = new LevelDecoder(barabasiIndividual);
             graph[i] = graphDecoder.decode();
-            //DungeonGenerator dgg = new DungeonGenerator(graph[i]);
-            //dgg.generate();
+            graph[i].addAttribute("runtime", (finalTime - initialTime));
             ga.exportGraph(graph[i]);
-            exportSizePerGen(graph[i], ga.getStats());
+            //exportSizePerGen(graph[i], ga.getStats());
         }
-        if(time.getN()==0)
-            time.addValue(0.0);
     }
     
     public void exportSizePerGen(Graph g, LevelStatistics stats){
@@ -198,10 +154,11 @@ public class Experiment {
             pw.flush();
             pw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Experiment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StandardLevelExperiment.class.getName(), ex.getMessage());
         }
     }
     
+    @Override
     public void readResults(){
         File folder = new File(LevelConfig.folder);
         ArrayList<File> results = new ArrayList<>();
@@ -217,7 +174,7 @@ public class Experiment {
         size = new DescriptiveStatistics(executions);
         asp = new DescriptiveStatistics(executions);
         uas = new DescriptiveStatistics(executions);
-        //din = new DescriptiveStatistics(executions);
+        time = new DescriptiveStatistics(executions);
         area = new DescriptiveStatistics(executions);
         
         double min = Double.MAX_VALUE;
@@ -236,19 +193,19 @@ public class Experiment {
 
         for(int i = 0; i < results.size(); i++){
             File dir = results.get(i);
-            String name = dir.getPath()+File.separator+"map_"+dir.getName()+".json";
-            System.out.println(name);
-            EvoJSONFileReader reader = new EvoJSONFileReader(name);
-            graph[i] = reader.parseJson();
+            //System.out.println(dir.getName());
+            LevelFileReader reader = new LevelFileReader(LevelConfig.folder, dir.getName());
+            graph[i] = reader.parseJsonToGraph();
             double[] detailedFitness = evaluate(graph[i]); 
-            
+            long runtime = graph[i].getAttribute("runtime");
             size.addValue(detailedFitness[0]);
             fitness.addValue(detailedFitness[1]);
             asp.addValue(detailedFitness[6]);
             uas.addValue(detailedFitness[7]);
-            //din.addValue(detailedFitness[8]);
             
-            double graphArea = (new GraphStreamUtil()).getGraphAreaWithBorder(graph[i], LevelConfig.borderSize);
+            time.addValue(runtime);
+            
+            double graphArea = (new GraphStreamUtil()).getGraphAreaWithBorder(graph[i], GeneralConfig.borderSize);
             area.addValue(graphArea);
             
             if(detailedFitness[1] < min){
@@ -262,16 +219,16 @@ public class Experiment {
             
             if(graphArea < mingArea){
                 mingArea = graphArea;
-                minBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], LevelConfig.borderSize);
+                minBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], GeneralConfig.borderSize);
             }
             if(graphArea > maxgArea){
                 maxgArea = graphArea;
-                maxBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], LevelConfig.borderSize);
+                maxBounds = (new GraphStreamUtil()).getGraphBoundsWithBorder(graph[i], GeneralConfig.borderSize);
             }
             // Size per Generation
-            String spgName = dir.getPath()+File.separator+"sizePerGen_"+dir.getName()+".txt";
-            System.out.println(name);
-            try {
+            //String spgName = dir.getPath()+File.separator+"sizePerGen_"+dir.getName()+".txt";
+            //System.out.println(name);
+            /*try {
                 FileReader fr = new FileReader(spgName);
                 Scanner scan = new Scanner(fr);
                 String genLine = scan.nextLine();
@@ -287,8 +244,8 @@ public class Experiment {
                 }
                     
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Experiment.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                Logger.getLogger(StandardLevelExperiment.class.getName(), ex.getMessage());
+            }*/
         }
         double minFitness = fitness.getMin();
         double meanFitness = fitness.getMean();
@@ -344,16 +301,16 @@ public class Experiment {
                 + "Max Area: "+maxgArea+" Dimensions: "+Arrays.toString(maxBounds)+"\n";
                     
         try {
-            PrintWriter pw = new PrintWriter(LevelConfig.folder+"table.txt");
+            PrintWriter pw = new PrintWriter(LevelConfig.folder+"level_table.txt");
             pw.printf(tableLine);
             pw.flush();
             pw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Experiment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StandardLevelExperiment.class.getName(), ex.getMessage());
         }
-        System.out.println("Results done at: "+LevelConfig.folder+"/table.txt");
+        System.out.println("Results done at: "+LevelConfig.folder+"level_table.txt");
         
-        String sizePerGen = "";
+        /*String sizePerGen = "";
         for(int i = 0; i < LevelConfig.maxGen; i++){
             ArrayList<Integer> list = sizePerGeneration.get(i);
             sizePerGen += i+" ";
@@ -368,8 +325,8 @@ public class Experiment {
             pw.flush();
             pw.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Experiment.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(StandardLevelExperiment.class.getName(), ex.getMessage());
+        }*/
     }
     
     public double[] evaluate(Graph graph){

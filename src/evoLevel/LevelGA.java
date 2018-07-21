@@ -5,14 +5,14 @@
  */
 package evoLevel;
 
-import image.LevelImageBuilder;
-import io.EvoJSONFileWriter;
+import config.GeneralConfig;
+import image.MapImageBuilder;
+import io.LevelFileWriter;
 import java.io.File;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
-import org.graphstream.algorithm.generator.BarabasiAlbertGenerator;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.ui.geom.Point3;
@@ -21,6 +21,7 @@ import parallelEvaluation.EvaluationTask;
 import parallelEvaluation.Notifier;
 import parallelEvaluation.Resource;
 import parallelEvaluation.Process;
+import util.LevelUtil;
 
 /**
  *
@@ -181,7 +182,7 @@ public class LevelGA {
             medp.addValue(detailedFitness[5]);
             asp.addValue(detailedFitness[6]);
             uas.addValue(detailedFitness[7]);
-            din.addValue(detailedFitness[8]);
+            //din.addValue(detailedFitness[8]); moved to puzzle
         }
         
         stats.getSizeMap().add(size);
@@ -349,8 +350,9 @@ public class LevelGA {
             dir.mkdir();
         }
         else{
-            System.err.println("Dir "+dir+" already exists!");
+            //System.err.println("Dir "+dir+" already exists!");
         }
+        LevelUtil.trimLevel(g);
         int maxX = 0;
         int maxY = 0;
         for(Node node : g.getEachNode()){
@@ -359,17 +361,16 @@ public class LevelGA {
             maxX = (int) Math.max(maxX, p.x + ((double) node.getAttribute("width")/2));
             maxY = (int) Math.max(maxY, p.y + ((double) node.getAttribute("height")/2));
         }
-        EvoJSONFileWriter fw = new EvoJSONFileWriter(g);
+        LevelFileWriter fw = new LevelFileWriter(g, LevelConfig.folder, hashString);
         System.out.println("Exporting Map\n"+
-                dir+"\\data_"+g.hashCode()+".json\n"+
-                dir+"\\map_"+g.hashCode()+".json");
-        fw.exportDataJSON(dir+"\\data_"+g.hashCode()+".json",
-                "GraphStream", maxX, maxY, true);
-        fw.exportMapJSON(dir+"\\map_"+g.hashCode()+".json",
-                "Evolutionary"+BarabasiAlbertGenerator.class.getSimpleName(), true);
+                //dir+"\\data_"+g.hashCode()+".json\n"+
+                dir+"\\level_"+hashString+".json");
+        //fw.exportDataJSON(dir+"\\data_"+g.hashCode()+".json",
+        //        "GraphStream", maxX, maxY, true);
+        fw.exportMapJSON("Evolutionary BarabasiAlbert Generator", maxX, maxY, GeneralConfig.borderSize, false);
         
         // export PNG
-        LevelImageBuilder gib = new LevelImageBuilder(dir+"\\img_"+g.hashCode()+".png");
+        MapImageBuilder gib = new MapImageBuilder(dir+"\\img_"+g.hashCode()+".png");
         gib.buildImage(g);
         
         //LevelConfigManager cm = new LevelConfigManager();

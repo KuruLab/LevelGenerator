@@ -2,7 +2,6 @@ package tests;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.*;
 import org.graphstream.graph.*;
 import org.graphstream.graph.implementations.*;
 import org.graphstream.ui.swingViewer.*;

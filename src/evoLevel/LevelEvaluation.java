@@ -5,11 +5,8 @@
  */
 package evoLevel;
 
-import puzzle.Symbol;
+import config.GeneralConfig;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Hashtable;
 import org.graphstream.algorithm.APSP;
 import org.graphstream.algorithm.APSP.APSPInfo;
 import org.graphstream.algorithm.AStar;
@@ -20,7 +17,6 @@ import org.graphstream.graph.Node;
 import org.graphstream.graph.Path;
 import org.graphstream.ui.geom.Point3;
 import org.graphstream.ui.graphicGraph.GraphPosLengthUtils;
-import static org.graphstream.ui.graphicGraph.GraphPosLengthUtils.edgeLength;
 import static org.graphstream.ui.graphicGraph.GraphPosLengthUtils.nodePointPosition;
 
 /**
@@ -300,7 +296,7 @@ public class LevelEvaluation {
                 double pointB = pB.x + (double)nodeB.getAttribute("width")/2.0;
                 diff = pointB - pointA;
             }
-            if(diff >= LevelConfig.edgeSize + 2.0)
+            if(diff >= GeneralConfig.edgeSize + 2.0)
                 return true;
         }
         // east || west 
@@ -316,7 +312,7 @@ public class LevelEvaluation {
                 double pointB = pB.y + (double)nodeB.getAttribute("height")/2.0;
                 diff = pointB - pointA;
             }
-            if(diff >= LevelConfig.edgeSize + 2.0)
+            if(diff >= GeneralConfig.edgeSize + 2.0)
                 return true;
         }
         return false;
@@ -783,7 +779,7 @@ public class LevelEvaluation {
         Point3 p2 = nodePointPosition(node2);
         Point3 p0 = new Point3((p1.x + p2.x) / 2.0f, (p1.y + p2.y) / 2.0f, (p1.z + p2.z) / 2.0f);
         double eW = p1.distance(p2);
-        double eH = (double) LevelConfig.edgeSize;
+        double eH = (double) GeneralConfig.edgeSize;
         //System.out.println("w: "+eW+" h: "+eH);
         Point3 e1 = new Point3(p0.x - eW/2.0f, p0.y - eH/2.0f, 0); // bot left
         Point3 e2 = new Point3(p0.x - eW/2.0f, p0.y + eH/2.0f, 0); // top left
@@ -815,36 +811,6 @@ public class LevelEvaluation {
         */
         int result = twoLinesIntersection(re2, re3, p3, p4) + twoLinesIntersection(re4, re1, p3, p4);
         return result;
-    }
-    
-    public Point3[] getFourRotatedEdgePoints(Edge edge){
-        Node node1 = edge.getNode0();
-        Node node2 = edge.getNode1();
-        
-        Point3 p1 = nodePointPosition(node1);
-        Point3 p2 = nodePointPosition(node2);
-        Point3 p0 = new Point3((p1.x + p2.x) / 2.0f, (p1.y + p2.y) / 2.0f, (p1.z + p2.z) / 2.0f);
-        
-        double eW = p1.distance(p2);
-        double eH = (double) LevelConfig.edgeSize;
-        
-        Point3 e1 = new Point3(p0.x - eW/2.0f, p0.y - eH/2.0f, 0); // bot left
-        Point3 e2 = new Point3(p0.x - eW/2.0f, p0.y + eH/2.0f, 0); // top left
-        Point3 e3 = new Point3(p0.x + eW/2.0f, p0.y + eH/2.0f, 0); // top right
-        Point3 e4 = new Point3(p0.x + eW/2.0f, p0.y - eH/2.0f, 0); // bot right
-        // clockwise rotation
-        double angle = -1*angleInRad(edge);
-        
-        Point3 re1 = new Point3(Math.round(p0.x + (e1.x - p0.x) * Math.cos(angle) + (e1.y - p0.y) * Math.sin(angle)),
-                                Math.round(p0.y - (e1.x - p0.x) * Math.sin(angle) + (e1.y - p0.y) * Math.cos(angle)));
-        Point3 re2 = new Point3(Math.round(p0.x + (e2.x - p0.x) * Math.cos(angle) + (e2.y - p0.y) * Math.sin(angle)),
-                                Math.round(p0.y - (e2.x - p0.x) * Math.sin(angle) + (e2.y - p0.y) * Math.cos(angle)));
-        Point3 re3 = new Point3(Math.round(p0.x + (e3.x - p0.x) * Math.cos(angle) + (e3.y - p0.y) * Math.sin(angle)),
-                                Math.round(p0.y - (e3.x - p0.x) * Math.sin(angle) + (e3.y - p0.y) * Math.cos(angle)));
-        Point3 re4 = new Point3(Math.round(p0.x + (e4.x - p0.x) * Math.cos(angle) + (e4.y - p0.y) * Math.sin(angle)),
-                                Math.round(p0.y - (e4.x - p0.x) * Math.sin(angle) + (e4.y - p0.y) * Math.cos(angle)));
-        Point3[] points = {re1, re2, re3, re4};
-        return points;
     }
     
     // returns true if the edge intersects with the line segment

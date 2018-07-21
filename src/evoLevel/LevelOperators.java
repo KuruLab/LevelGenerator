@@ -5,6 +5,7 @@
  */
 package evoLevel;
 
+import config.GeneralConfig;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -78,8 +79,8 @@ public class LevelOperators {
         height = height * LevelConfig.nodeYLeap;
         // then, create the random node
         int[] xyz = new int[3];
-        xyz[0] = (int) Math.max(rng.nextInt((int) width), LevelConfig.borderSize);
-        xyz[1] = (int) Math.max(rng.nextInt((int) height), LevelConfig.borderSize);
+        xyz[0] = (int) Math.max(rng.nextInt((int) width), GeneralConfig.borderSize);
+        xyz[1] = (int) Math.max(rng.nextInt((int) height), GeneralConfig.borderSize);
         xyz[2] = 0;
         // node sides are currently not evolved, but automatically normalized based on degree
         //int deltaSize = (int) (LevelConfig.maxNodeSize - LevelConfig.minNodeSize);
@@ -140,12 +141,12 @@ public class LevelOperators {
         double yLeap = (LevelConfig.nodeYLeap - 1.0) * height;
         
         // find the bounds of the tweak for x
-        double minX = Math.max(node.getXYZ()[0] - xLeap, LevelConfig.borderSize);
+        double minX = Math.max(node.getXYZ()[0] - xLeap, GeneralConfig.borderSize);
         double maxX =          node.getXYZ()[0] + xLeap;
         xyz[0] = (int) ((rng.nextDouble() * (maxX - minX)) + minX);
         
         // find the bounds of the tweak for y
-        double minY = Math.max(node.getXYZ()[1] - yLeap, LevelConfig.borderSize);
+        double minY = Math.max(node.getXYZ()[1] - yLeap, GeneralConfig.borderSize);
         double maxY =          node.getXYZ()[1] + yLeap;
         xyz[1] = (int) ((rng.nextDouble() * (maxY - minY)) + minY);
         
@@ -186,12 +187,12 @@ public class LevelOperators {
             String id = node.getXYZ()[0] + "." + node.getXYZ()[1] + "." + node.getXYZ()[2];
             while (takenID.contains(id)) {
                 int[] xyz = new int[3];
-                int minX = (int) Math.max(LevelConfig.borderSize, node.getXYZ()[0] - node.getWidth());
-                int maxX = (int) Math.min(node.getXYZ()[0] + node.getWidth(), width - LevelConfig.borderSize);
+                int minX = (int) Math.max(GeneralConfig.borderSize, node.getXYZ()[0] - node.getWidth());
+                int maxX = (int) Math.min(node.getXYZ()[0] + node.getWidth(), width - GeneralConfig.borderSize);
                 xyz[0] = rng.nextInt(maxX - minX) + minX;
 
-                int minY = (int) Math.max(LevelConfig.borderSize, node.getXYZ()[1] - node.getHeight());
-                int maxY = (int) Math.min(node.getXYZ()[1] + node.getHeight(), height - LevelConfig.borderSize);
+                int minY = (int) Math.max(GeneralConfig.borderSize, node.getXYZ()[1] - node.getHeight());
+                int maxY = (int) Math.min(node.getXYZ()[1] + node.getHeight(), height - GeneralConfig.borderSize);
                 xyz[1] = rng.nextInt(maxY - minY) + minY;
                 xyz[2] = 0;
 

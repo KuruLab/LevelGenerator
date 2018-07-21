@@ -5,6 +5,7 @@
  */
 package evoLevel;
 
+import config.GeneralConfig;
 import java.util.Arrays;
 
 /**
@@ -135,21 +136,21 @@ public class RefinementOperator {
         // north, so roomA must go north
         if ((pB[1] > pA[1]) && (deltaY >= deltaX)) {
             ideal[0] = pB[0];
-            ideal[1] = (int) Math.max((int) (pB[1] - (roomB.getHeight() / 2) - (roomA.getHeight() / 2) - minDistance), LevelConfig.borderSize);
+            ideal[1] = (int) Math.max((int) (pB[1] - (roomB.getHeight() / 2) - (roomA.getHeight() / 2) - minDistance), GeneralConfig.borderSize);
             ideal[2] = 0;
         } // south, so roomA must go south
         else if ((pB[1] < pA[1]) && (deltaY >= deltaX)) {
             ideal[0] = pB[0];
-            ideal[1] = (int) Math.max((int) (pB[1] + (roomB.getHeight() / 2) + (roomA.getHeight() / 2) + minDistance), LevelConfig.borderSize);
+            ideal[1] = (int) Math.max((int) (pB[1] + (roomB.getHeight() / 2) + (roomA.getHeight() / 2) + minDistance), GeneralConfig.borderSize);
             ideal[2] = 0;
         } // east
         else if ((pB[0] > pA[0]) && (deltaX >= deltaY)) {
-            ideal[0] = (int) Math.max((int) (pB[0] - (roomB.getWidth() / 2) - (roomA.getWidth() / 2) - minDistance), LevelConfig.borderSize);
+            ideal[0] = (int) Math.max((int) (pB[0] - (roomB.getWidth() / 2) - (roomA.getWidth() / 2) - minDistance), GeneralConfig.borderSize);
             ideal[1] = pB[1];
             ideal[2] = 0;
         } // west
         else if ((pB[0] < pA[0]) && (deltaX >= deltaY)) {
-            ideal[0] = (int) Math.max((int) (pB[0] + (roomB.getWidth() / 2) + (roomA.getWidth() / 2) + minDistance), LevelConfig.borderSize);
+            ideal[0] = (int) Math.max((int) (pB[0] + (roomB.getWidth() / 2) + (roomA.getWidth() / 2) + minDistance), GeneralConfig.borderSize);
             ideal[1] = pB[1];
             ideal[2] = 0;
         } else {

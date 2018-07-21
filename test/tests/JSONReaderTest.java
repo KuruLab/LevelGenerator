@@ -6,8 +6,8 @@
 package tests;
 
 import evoLevel.LevelConfig;
-import io.EvoJSONFileReader;
-import graphstream.GraphStreamUtil;
+import io.LevelFileReader;
+import util.GraphStreamUtil;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
 
@@ -20,9 +20,9 @@ public class JSONReaderTest {
     public static void main(String args[]){
         System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
         
-        String path = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\stantard_pm0.005\\32373742\\map_32373742.json";
-        EvoJSONFileReader reader = new EvoJSONFileReader(path);
-        Graph graph = reader.parseJson();
+        //String path = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\stantard_pm0.005\\32373742\\map_32373742.json";
+        LevelFileReader reader = new LevelFileReader(LevelConfig.folder, "test");
+        Graph graph = reader.parseJsonToGraph();
         
         GraphStreamUtil util = new GraphStreamUtil();
         util.normalizeNodesSizes(graph, LevelConfig.minNodeSize, LevelConfig.maxNodeSize);

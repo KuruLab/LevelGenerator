@@ -7,7 +7,7 @@ package tests;
 
 import evoLevel.LevelDecoder;
 import evoLevel.LevelEvaluation;
-import image.LevelImageBuilder;
+import image.MapImageBuilder;
 import evoLevel.LevelIndividual;
 import evoLevel.RandomLevelGenerator;
 import evoLevel.RefinementOperator;
@@ -64,7 +64,7 @@ public class EvaluationTest {
         System.out.println(edge);
         evaluation.rectEdgeIntersection(edge, new Point3(0,0,0), new Point3(0,0,0));
         
-        LevelImageBuilder gib = new LevelImageBuilder("image");
+        MapImageBuilder gib = new MapImageBuilder("image");
         gib.buildImage(sonRefined);
     }
 }

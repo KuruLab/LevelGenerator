@@ -113,9 +113,8 @@ public class EfficientEvaluation extends LevelEvaluation {
                     + " MEP: " + fitness[5]
                     + (LevelConfig.useAverageShortestPath ? " ASP: " + fitness[6] : "")
                     + (LevelConfig.useDesiredAngles ? " UAS: " + fitness[7] : "")
-                    + (LevelConfig.useIdealNonLinearity ? " DIN: " + fitness[8] : "")
+                    //+ (LevelConfig.useIdealNonLinearity ? " DIN: " + fitness[8] : "")
                     + ")");
-        }
-        
+        }       
     }
 }

@@ -5,8 +5,6 @@
  */
 package evoLevel;
 
-import evoLevel.LevelConfig;
-import evoLevel.LevelIndividual;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;

@@ -11,7 +11,7 @@ import evoLevel.LevelConfig;
  *
  * @author andre
  */
-public class OnlyASPandDIN extends Experiment{
+public class OnlyASPandDIN extends StandardLevelExperiment{
     public static void main(String args[]){  
        OnlyASPandDIN exp = new OnlyASPandDIN();
        exp.run();
@@ -31,11 +31,11 @@ public class OnlyASPandDIN extends Experiment{
         
         LevelConfig.useDesiredAngles = false;
         LevelConfig.useAverageShortestPath = true; 
-        LevelConfig.useIdealNonLinearity = true; 
+        //LevelConfig.useIdealNonLinearity = true; 
         LevelConfig.desiredAngles = new int[0]; 
         
-        LevelConfig.idealNonLinearity = 3;
+        //LevelConfig.idealNonLinearity = 3;
         
-        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_asp_and_din\\";
+        LevelConfig.folder = "..\\data\\experiments\\only_asp_and_din\\";
     }
 }

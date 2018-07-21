@@ -11,7 +11,7 @@ import evoLevel.LevelConfig;
  *
  * @author andre
  */
-public class OnlyMaximizeSizeExperiment extends Experiment{
+public class OnlyMaximizeSizeExperiment extends StandardLevelExperiment{
     public static void main(String args[]){  
        OnlyMaximizeSizeExperiment exp = new OnlyMaximizeSizeExperiment();
        exp.run();
@@ -31,7 +31,7 @@ public class OnlyMaximizeSizeExperiment extends Experiment{
         LevelConfig.maxGen       = 1000;
         LevelConfig.useDesiredAngles = false;
         LevelConfig.useAverageShortestPath = false; 
-        LevelConfig.useIdealNonLinearity = false; 
+        //LevelConfig.useIdealNonLinearity = false; 
         LevelConfig.desiredAngles = new int[0];
         
         LevelConfig.useRefinement = false;
@@ -41,6 +41,6 @@ public class OnlyMaximizeSizeExperiment extends Experiment{
         LevelConfig.nodeYLeap = 1.1;
         LevelConfig.nodeZLeap = 0;
         
-        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\only_size_g1000\\";
+        LevelConfig.folder = "..\\data\\experiments\\only_size_g1000\\";
     }
 }

@@ -10,7 +10,6 @@ import evoLevel.LevelEvaluation;
 import evoLevel.LevelOperators;
 import evoLevel.LevelIndividual;
 import evoLevel.RandomLevelGenerator;
-import java.text.DecimalFormat;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
 

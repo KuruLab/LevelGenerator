@@ -5,8 +5,7 @@
  */
 package evoLevel;
 
-import graphstream.GraphStreamUtil;
-import util.LevelToolkit;
+import util.GraphStreamUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;

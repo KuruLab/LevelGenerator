@@ -5,12 +5,10 @@
  */
 package tests;
 
-import evoLevel.LevelConfig;
 import evoLevel.LevelDecoder;
 import evoLevel.LevelOperators;
 import evoLevel.LevelIndividual;
 import evoLevel.RandomLevelGenerator;
-import util.LevelToolkit;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.DefaultGraph;
 

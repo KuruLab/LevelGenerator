@@ -5,6 +5,7 @@
  */
 package io;
 
+import config.GeneralConfig;
 import evoLevel.LevelConfig;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,8 +27,8 @@ public class LevelConfigManager {
     public void saveRunTime(String name){        
         String pathStr = name.replace("/", File.separator).replace("\\", File.separator);
         String folderStr = LevelConfig.folder.replace("/", File.separator).replace("\\", File.separator);
-        Integer borderS = LevelConfig.borderSize;
-        Double edgeS = LevelConfig.edgeSize;
+        Integer borderS = GeneralConfig.borderSize;
+        Double edgeS = GeneralConfig.edgeSize;
         Integer minNC = LevelConfig.minNodeCount;
         Integer maxNC = LevelConfig.maxNodeCount;
         Double minNS = LevelConfig.minNodeSize;
@@ -50,9 +51,9 @@ public class LevelConfigManager {
         Boolean useDA = LevelConfig.useDesiredAngles;
         Boolean useAvgSP = LevelConfig.useAverageShortestPath;
         Boolean useMNC = LevelConfig.useMaximizeNodeCount;
-        Boolean useINL = LevelConfig.useIdealNonLinearity;
+        //Boolean useINL = LevelConfig.useIdealNonLinearity;
         int[] angles = LevelConfig.desiredAngles;
-        Integer iNL = LevelConfig.idealNonLinearity;
+        //Integer iNL = LevelConfig.idealNonLinearity;
         saveConfig(pathStr,
                 folderStr,
                 borderS, edgeS,
@@ -62,8 +63,8 @@ public class LevelConfigManager {
                 crxP, mutP, refP,
                 xL, yL, zL,
                 pop, gen,
-                useDA, useAvgSP, useMNC, useINL,
-                angles, iNL);
+                useDA, useAvgSP, useMNC,
+                angles);
     }
     
     public void saveConfig(String path,
@@ -75,8 +76,8 @@ public class LevelConfigManager {
             Double crxP, Double mutP, Double refP,
             Double xL, Double yL, Double zL,
             Integer pop, Integer gen,
-            Boolean useDA, Boolean useASP, Boolean useMNC, Boolean useINL,
-            int[] angles, Integer iNL)
+            Boolean useDA, Boolean useASP, Boolean useMNC,
+            int[] angles)
     {
         PrintWriter pw = null;
         try {
@@ -113,14 +114,14 @@ public class LevelConfigManager {
             
             json.put("useDesiredAngles", useDA);
             json.put("useAverageShortestPath", useASP);
-            json.put("useIdealNonLinearity", useINL);
+            //json.put("useIdealNonLinearity", useINL);
             json.put("useMaximizeNodeCount", useMNC);
             
             JSONArray array = new JSONArray();
             for(int i = 0; i < angles.length; i++)
                 array.add(angles[i]);
             json.put("desiredAngles", array);
-            json.put("idealNonLinearity", iNL);
+            //json.put("idealNonLinearity", iNL);
             
             // non-user defined
             json.put("scaleFactor", 50);
@@ -138,17 +139,17 @@ public class LevelConfigManager {
         }
     }
     
-    public void loadConfig(String path){
+    public void loadConfig(String folder, String filename){
         try {
-            EvoJSONFileReader reader = new EvoJSONFileReader(path);
+            LevelFileReader reader = new LevelFileReader(folder, filename);
             String raw = reader.readRawString();
             
             JSONParser parser = new JSONParser();
             JSONObject json = (JSONObject) parser.parse(raw);
             
             LevelConfig.folder = ((String) json.get("folder")).replace("/", File.separator).replace("\\", File.separator);
-            LevelConfig.borderSize = (int)(long) json.get("borderSize");
-            LevelConfig.edgeSize = (double) json.get("edgeSize");
+            GeneralConfig.borderSize = (int)(long) json.get("borderSize");
+            GeneralConfig.edgeSize = (double) json.get("edgeSize");
             LevelConfig.minNodeCount = (int) (long) json.get("minNodeCount");
             LevelConfig.maxNodeCount = (int) (long) json.get("maxNodeCount");
             LevelConfig.minNodeSize = (double) json.get("minNodeSize");
@@ -170,7 +171,7 @@ public class LevelConfigManager {
             LevelConfig.maxGen = (int)(long) json.get("maxGen");
             LevelConfig.useDesiredAngles = (boolean) json.get("useDesiredAngles");
             LevelConfig.useAverageShortestPath = (boolean) json.get("useAverageShortestPath");
-            LevelConfig.useIdealNonLinearity = (boolean) json.get("useIdealNonLinearity");
+            //LevelConfig.useIdealNonLinearity = (boolean) json.get("useIdealNonLinearity");
             LevelConfig.useMaximizeNodeCount = (boolean) json.get("useMaximizeNodeCount");
             
             JSONArray array = (JSONArray) json.get("desiredAngles");
@@ -179,7 +180,7 @@ public class LevelConfigManager {
                 angles[i] = (int)(long) array.get(i);
             }
             LevelConfig.desiredAngles = angles;
-            LevelConfig.idealNonLinearity = (int)(long) json.get("idealNonLinearity");
+            //LevelConfig.idealNonLinearity = (int)(long) json.get("idealNonLinearity");
         } catch (ParseException ex) {
             Logger.getLogger(LevelConfigManager.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -11,7 +11,7 @@ import evoLevel.LevelConfig;
  *
  * @author andre
  */
-public class AcyclicExperiment extends Experiment{
+public class AcyclicExperiment extends StandardLevelExperiment{
     
     public static void main(String args[]){  
        AcyclicExperiment exp = new AcyclicExperiment();
@@ -27,7 +27,7 @@ public class AcyclicExperiment extends Experiment{
         super.setup();
         
         LevelConfig.maxLinksPerStep = 1; // m
-        LevelConfig.folder = "D:\\Mega\\posdoc\\MapGenerator\\experiments\\acyclic\\";
+        LevelConfig.folder = "..\\data\\experiments\\acyclic\\";
     }
     
 }
