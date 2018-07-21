@@ -31,7 +31,6 @@ public class OnlyMaximizeSizeExperiment extends StandardLevelExperiment{
         LevelConfig.maxGen       = 1000;
         LevelConfig.useDesiredAngles = false;
         LevelConfig.useAverageShortestPath = false; 
-        //LevelConfig.useIdealNonLinearity = false; 
         LevelConfig.desiredAngles = new int[0];
         
         LevelConfig.useRefinement = false;

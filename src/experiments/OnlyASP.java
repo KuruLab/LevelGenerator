@@ -11,13 +11,13 @@ import evoLevel.LevelConfig;
  *
  * @author andre
  */
-public class OnlyASPandDIN extends StandardLevelExperiment{
+public class OnlyASP extends StandardLevelExperiment{
     public static void main(String args[]){  
-       OnlyASPandDIN exp = new OnlyASPandDIN();
+       OnlyASP exp = new OnlyASP();
        exp.run();
     }
     
-    public OnlyASPandDIN() {
+    public OnlyASP() {
         super();
     }
     
@@ -31,11 +31,8 @@ public class OnlyASPandDIN extends StandardLevelExperiment{
         
         LevelConfig.useDesiredAngles = false;
         LevelConfig.useAverageShortestPath = true; 
-        //LevelConfig.useIdealNonLinearity = true; 
         LevelConfig.desiredAngles = new int[0]; 
         
-        //LevelConfig.idealNonLinearity = 3;
-        
-        LevelConfig.folder = "..\\data\\experiments\\only_asp_and_din\\";
+        LevelConfig.folder = "..\\data\\experiments\\only_asp\\";
     }
 }
